@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { PostsIndex } from "./PostsIndex";
-import { PostsNew } from "./PostsNew";
+
 import { Modal } from "./Modal";
 import { PostsShow } from "./PostsShow";
+import Snowfall from "react-snowfall";
 
 //Functions
 
@@ -26,12 +27,6 @@ export function Home() {
   //Modal Close
   const handleHidePost = () => {
     setIsPostsShowVisible(false);
-  };
-  //Create Post
-  const handleCreatePost = (params) => {
-    axios.post("http://localhost:3000/posts.json", params).then((response) => {
-      setPosts([...posts, response.data]);
-    });
   };
 
   //Update Post
