@@ -1,0 +1,30 @@
+#posts-index img {
+  width: 300px;
+}
+
+#title-box {
+  height: 20px;
+  width: 50%;
+  padding: 8px 8px;
+  margin: 8px 0;
+}
+
+#body-box {
+  height: 200px;
+  width: 50%;
+  margin: 8px 0;
+}
+
+#image-box {
+  height: 20px;
+  width: 50%;
+  padding: 8px 8px;
+  margin: 8px 0;
+  
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
