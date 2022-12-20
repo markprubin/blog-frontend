@@ -1,10 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { PostsIndex } from "./PostsIndex";
-
+import Snowfall from "react-snowfall";
 import { Modal } from "./Modal";
 import { PostsShow } from "./PostsShow";
-import Snowfall from "react-snowfall";
 
 //Functions
 
@@ -59,6 +58,7 @@ export function Home() {
   return (
     <div>
       <div className="container">
+        <Snowfall color="lightblue" snowflakeCount={400} />
         <h1>The Blog for Nobody.</h1>
         <PostsIndex posts={posts} onSelectPost={handleShowPost} />
         <Modal show={isPostsShowVisible} onClose={handleHidePost}>
