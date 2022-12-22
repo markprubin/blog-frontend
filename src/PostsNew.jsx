@@ -20,13 +20,13 @@ export function PostsNew() {
       <h1>New post</h1>
       <form onSubmit={handleSubmit} id="form-box">
         <div>
-          Title: <input name="title" id="title-box" type="text" />
+          Title: <input className="form-control" name="title" id="title-box" type="text" />
         </div>
         <div>
-          Body: <input name="body" id="body-box" type="text" />
+          Body: <input className="form-control" name="body" id="body-box" type="text" />
         </div>
         <div>
-          Image URL: <input name="image" id="image-box" type="text" />
+          Image URL: <input className="form-control" name="image" id="image-box" type="text" />
         </div>
         <button type="submit">Create Post</button>
       </form>

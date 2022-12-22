@@ -11,6 +11,7 @@ export function Home() {
   const [posts, setPosts] = useState([]);
   const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
   const [currentPost, setCurrentPost] = useState({});
+
   //All Posts
   const handleIndexPosts = () => {
     axios.get("http://localhost:3000/posts.json").then((response) => {
@@ -60,6 +61,7 @@ export function Home() {
       <div className="container">
         <Snowfall color="lightblue" snowflakeCount={400} />
         <h1>The Blog for Nobody.</h1>
+
         <PostsIndex posts={posts} onSelectPost={handleShowPost} />
         <Modal show={isPostsShowVisible} onClose={handleHidePost}>
           <PostsShow post={currentPost} onPostUpdate={handleUpdatePost} onPostDestroy={handleDestroyPost} />

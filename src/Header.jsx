@@ -4,16 +4,32 @@ import { Modal } from "./Modal";
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Login } from "./Login";
 
 export function Header() {
   //Modal Sign Up
 
   const [isSignupVisible, setIsSignupVisible] = useState(false);
+  const [isLoginVisible, setIsLoginVisible] = useState(false);
+
   const handleSignupShow = () => {
     setIsSignupVisible(true);
   };
   const handleSignupClose = () => {
     setIsSignupVisible(false);
+  };
+  const handleLoginShow = () => {
+    setIsLoginVisible(true);
+  };
+  const handleLoginClose = () => {
+    setIsLoginVisible(false);
+  };
+
+  const handleLogout = (event) => {
+    event.preventDefault();
+    delete axios.defaults.headers.common["Authorization"];
+    localStorage.removeItem("jwt");
+    window.location.href = "/";
   };
 
   return (
@@ -60,31 +76,37 @@ export function Header() {
                 </Link>
               </li>
               |||
-              <li className="nav-item">
-                <Link to="/login">
-                  <button type="button" class="btn btn-light">
-                    Log In
-                  </button>
-                </Link>
-              </li>
+              {localStorage.jwt === undefined ? (
+                <>
+                  <li className="nav-item">
+                    <button type="button" class="btn btn-success">
+                      <a onClick={handleLoginShow}>Log In</a>
+                    </button>
+                  </li>
+                  |||
+                  <li className="nav-item">
+                    <button type="button" class="btn btn-warning">
+                      <a onClick={handleSignupShow}>Sign Up</a>
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <li class="nav-item">
+                  <a onClick={handleLogout} class="nav-link" href="#">
+                    Log Out
+                  </a>
+                </li>
+              )}
               |||
-              <li className="nav-item">
-                <button type="button" class="btn btn-warning">
-                  <a onClick={handleSignupShow}>Sign Up</a>
-                </button>
-              </li>
-              |||
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <LogoutLink />
-                </a>
-              </li>
             </ul>
           </div>
         </div>
       </nav>
       <Modal show={isSignupVisible} onClose={handleSignupClose}>
         <Signup />
+      </Modal>
+      <Modal show={isLoginVisible} onClose={handleLoginClose}>
+        <Login />
       </Modal>
     </header>
   );
